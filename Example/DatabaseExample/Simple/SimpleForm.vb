@@ -16,7 +16,7 @@ Public Class SimpleForm
         _config.Database = "library"
         _config.User = "root"
         _config.Password = "database"
-        Application.Config = _config
+        Configuration.Config = _config
         database = MySqlDatabase.Instance()
     End Sub
 

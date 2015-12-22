@@ -10,7 +10,7 @@ Public Class Form1
         _config.Database = "library"
         _config.User = "root"
         _config.Password = "database"
-        Application.Config = _config
+        Configuration.Config = _config
 
         userController = New UserMySqlController()
 
@@ -22,7 +22,5 @@ Public Class Form1
 
         'userController.SelectSql = "select user_id,name from pengguna"
         'Dim dataTable As DataTable = userController.se
-        Dim users As List(Of User) = userController.Search("user_id like '%rafi%'")
-        DataGridView1.DataSource = users
     End Sub
 End Class

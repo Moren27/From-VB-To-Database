@@ -1,6 +1,18 @@
-﻿Public MustInherit Class MySqlController(Of T)
+﻿Imports System.ComponentModel
+
+Public MustInherit Class MySqlController(Of T)
 
     Protected _database As MySqlDatabase
+    Protected _autoId As Boolean
+
+    Public Sub New()
+        Me.New(False)
+    End Sub
+
+    Public Sub New(autoId As Boolean)
+        Me._database = MySqlDatabase.Instance()
+        Me._autoId = autoId
+    End Sub
 
     Private _selectSql As String
     Public Property SelectSql() As String
@@ -42,7 +54,7 @@
         End Set
     End Property
 
-    Protected MustOverride Sub PopulateData(reader As MySqlDataReader, ByRef result As List(Of T))
+    Protected MustOverride Sub PopulateData(reader As MySqlDataReader, ByRef result As BindingList(Of T))
 
     Protected Overridable Function DefaultSelectSql() As String
         Return Nothing
@@ -67,12 +79,8 @@
     Protected Overridable Sub DeleteParameters(ByRef command As MySqlCommand, item As T)
     End Sub
 
-    Public Sub New()
-        Me._database = MySqlDatabase.Instance()
-    End Sub
-
-    Public Function Search(filter As String) As List(Of T)
-        Dim _result As List(Of T) = Nothing
+    Public Function Search(filter As String) As BindingList(Of T)
+        Dim _result As BindingList(Of T) = Nothing
         Dim _command As MySqlCommand = Nothing
         Dim _reader As MySqlDataReader = Nothing
         Try
@@ -81,7 +89,7 @@
             _database.Open()
             _command = New MySqlCommand(sql, _database.Connection)
             _reader = _command.ExecuteReader()
-            _result = New List(Of T)
+            _result = New BindingList(Of T)
             Me.PopulateData(_reader, _result)
         Catch ex As Exception
             Throw

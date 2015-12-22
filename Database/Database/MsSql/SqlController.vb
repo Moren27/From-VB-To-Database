@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.ComponentModel
 
 Public MustInherit Class SqlController(Of T)
 
@@ -44,7 +45,7 @@ Public MustInherit Class SqlController(Of T)
         End Set
     End Property
 
-    Protected MustOverride Sub PopulateData(reader As SqlDataReader, ByRef result As List(Of T))
+    Protected MustOverride Sub PopulateData(reader As SqlDataReader, ByRef result As BindingList(Of T))
 
     Protected Overridable Function DefaultSelectSql() As String
         Return Nothing
@@ -73,8 +74,8 @@ Public MustInherit Class SqlController(Of T)
         Me._database = SqlDatabase.Instance()
     End Sub
 
-    Public Function Search(filter As String) As List(Of T)
-        Dim _result As List(Of T) = Nothing
+    Public Function Search(filter As String) As BindingList(Of T)
+        Dim _result As BindingList(Of T) = Nothing
         Dim _command As SqlCommand = Nothing
         Dim _reader As SqlDataReader = Nothing
         Try
@@ -83,7 +84,7 @@ Public MustInherit Class SqlController(Of T)
             _database.Open()
             _command = New SqlCommand(sql, _database.Connection)
             _reader = _command.ExecuteReader()
-            _result = New List(Of T)
+            _result = New BindingList(Of T)
             Me.PopulateData(_reader, _result)
         Catch ex As Exception
             Throw

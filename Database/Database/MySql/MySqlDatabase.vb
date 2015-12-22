@@ -17,7 +17,7 @@
     End Property
 
     Protected Sub New()
-        Dim _config As Config = Application.Config
+        Dim _config As Config = Configuration.Config
         _connection = New MySqlConnection(_config.ToConnectionString())
     End Sub
 
@@ -52,29 +52,46 @@
     End Function
 
     Public Function ExecuteNonQuery(command As MySqlCommand) As Integer
-        Dim _result As Integer = -1
-        Dim _transaction As MySqlTransaction = Nothing
+        Dim result As Integer = -1
+        Dim transaction As MySqlTransaction = Nothing
         Try
             Me.Open()
-            _transaction = _connection.BeginTransaction()
+            transaction = _connection.BeginTransaction()
             command.Connection = _connection
-            command.Transaction = _transaction
-            _result = command.ExecuteNonQuery()
-            _transaction.Commit()
+            command.Transaction = transaction
+            result = command.ExecuteNonQuery()
+            transaction.Commit()
         Catch ex As Exception
-            If Not _transaction Is Nothing Then
-                _transaction.Rollback()
+            If Not transaction Is Nothing Then
+                transaction.Rollback()
             End If
             Throw
         Finally
             If Not command Is Nothing Then
                 command.Dispose()
             End If
-            If Not _transaction Is Nothing Then
-                _transaction.Dispose()
+            If Not transaction Is Nothing Then
+                transaction.Dispose()
             End If
         End Try
-        Return _result
+        Return result
+    End Function
+
+    Public Function ExecuteScalar(sql As String) As Object
+        Dim result As Object = Nothing
+        Dim command As MySqlCommand = Nothing
+        Try
+            Me.Open()
+            command = New MySqlCommand(sql, _connection)
+            result = command.ExecuteScalar()
+        Catch ex As Exception
+            Throw
+        Finally
+            If Not command Is Nothing Then
+                command.Dispose()
+            End If
+        End Try
+        Return Parse.Value(result)
     End Function
 
     Public Function Fill(sql As String) As DataTable

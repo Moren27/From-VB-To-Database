@@ -19,7 +19,7 @@ Public Class SqlDatabase
     End Property
 
     Protected Sub New()
-        Dim _config As Config = Application.Config
+        Dim _config As Config = Configuration.Config
         Dim _connectionString As String = _config.ToConnectionString()
         _connection = New SqlConnection(_config.ToConnectionString())
     End Sub
