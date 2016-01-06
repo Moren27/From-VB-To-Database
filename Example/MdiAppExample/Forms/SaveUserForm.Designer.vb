@@ -26,17 +26,17 @@ Partial Class SaveUserForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.idText = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.usernameText = New System.Windows.Forms.TextBox()
         Me.nameText = New System.Windows.Forms.TextBox()
-        Me.placeText = New System.Windows.Forms.TextBox()
-        Me.genderCombo = New System.Windows.Forms.ComboBox()
-        Me.birthPicker = New System.Windows.Forms.DateTimePicker()
         Me.saveButton = New System.Windows.Forms.Button()
         Me.closeButton = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.birthPicker = New System.Windows.Forms.DateTimePicker()
+        Me.placeText = New System.Windows.Forms.TextBox()
+        Me.genderCombo = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.passwordText = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -112,42 +112,6 @@ Partial Class SaveUserForm
         Me.idText.Size = New System.Drawing.Size(500, 20)
         Me.idText.TabIndex = 2
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 48)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(35, 13)
-        Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Nama"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(3, 96)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(71, 13)
-        Me.Label4.TabIndex = 4
-        Me.Label4.Text = "Jenis Kelamin"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(3, 120)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(69, 13)
-        Me.Label5.TabIndex = 5
-        Me.Label5.Text = "Tempat Lahir"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(3, 144)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(72, 13)
-        Me.Label6.TabIndex = 6
-        Me.Label6.Text = "Tanggal Lahir"
-        '
         'usernameText
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.usernameText, 3)
@@ -166,32 +130,6 @@ Partial Class SaveUserForm
         Me.nameText.Size = New System.Drawing.Size(500, 20)
         Me.nameText.TabIndex = 8
         '
-        'placeText
-        '
-        Me.TableLayoutPanel1.SetColumnSpan(Me.placeText, 3)
-        Me.placeText.Location = New System.Drawing.Point(103, 123)
-        Me.placeText.Name = "placeText"
-        Me.placeText.Size = New System.Drawing.Size(500, 20)
-        Me.placeText.TabIndex = 9
-        '
-        'genderCombo
-        '
-        Me.TableLayoutPanel1.SetColumnSpan(Me.genderCombo, 3)
-        Me.genderCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.genderCombo.FormattingEnabled = True
-        Me.genderCombo.Location = New System.Drawing.Point(103, 99)
-        Me.genderCombo.Name = "genderCombo"
-        Me.genderCombo.Size = New System.Drawing.Size(500, 21)
-        Me.genderCombo.TabIndex = 10
-        '
-        'birthPicker
-        '
-        Me.TableLayoutPanel1.SetColumnSpan(Me.birthPicker, 3)
-        Me.birthPicker.Location = New System.Drawing.Point(103, 147)
-        Me.birthPicker.Name = "birthPicker"
-        Me.birthPicker.Size = New System.Drawing.Size(500, 20)
-        Me.birthPicker.TabIndex = 11
-        '
         'saveButton
         '
         Me.saveButton.Location = New System.Drawing.Point(449, 267)
@@ -209,6 +147,68 @@ Partial Class SaveUserForm
         Me.closeButton.TabIndex = 13
         Me.closeButton.Text = "Batal"
         Me.closeButton.UseVisualStyleBackColor = True
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(3, 144)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(72, 13)
+        Me.Label6.TabIndex = 6
+        Me.Label6.Text = "Tanggal Lahir"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(3, 120)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(69, 13)
+        Me.Label5.TabIndex = 5
+        Me.Label5.Text = "Tempat Lahir"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(3, 96)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(71, 13)
+        Me.Label4.TabIndex = 4
+        Me.Label4.Text = "Jenis Kelamin"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(3, 48)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(35, 13)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "Nama"
+        '
+        'birthPicker
+        '
+        Me.TableLayoutPanel1.SetColumnSpan(Me.birthPicker, 3)
+        Me.birthPicker.Location = New System.Drawing.Point(103, 147)
+        Me.birthPicker.Name = "birthPicker"
+        Me.birthPicker.Size = New System.Drawing.Size(500, 20)
+        Me.birthPicker.TabIndex = 11
+        '
+        'placeText
+        '
+        Me.TableLayoutPanel1.SetColumnSpan(Me.placeText, 3)
+        Me.placeText.Location = New System.Drawing.Point(103, 123)
+        Me.placeText.Name = "placeText"
+        Me.placeText.Size = New System.Drawing.Size(500, 20)
+        Me.placeText.TabIndex = 9
+        '
+        'genderCombo
+        '
+        Me.TableLayoutPanel1.SetColumnSpan(Me.genderCombo, 3)
+        Me.genderCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.genderCombo.FormattingEnabled = True
+        Me.genderCombo.Location = New System.Drawing.Point(103, 99)
+        Me.genderCombo.Name = "genderCombo"
+        Me.genderCombo.Size = New System.Drawing.Size(500, 21)
+        Me.genderCombo.TabIndex = 10
         '
         'Label7
         '

@@ -10,7 +10,7 @@
 
     Private Sub LoginButton_Click(sender As Object, e As EventArgs) Handles LoginButton.Click
         Application.User = userController.Login(usernameText.Text, passwordText.Text)
-        If (Not Application.User Is Nothing) Then
+        If Application.IsLogin() Then
             mainForm.ShowMenu(True)
             Me.Close()
         Else

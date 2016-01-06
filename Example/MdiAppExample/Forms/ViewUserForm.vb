@@ -17,6 +17,7 @@ Public Class ViewUserForm
         SaveUserForm.User = New User()
         SaveUserForm.Tag = "Add"
         SaveUserForm.ShowDialog()
+        Me.LoadGridView(Nothing)
     End Sub
 
     Private Sub editButton_Click(sender As Object, e As EventArgs) Handles editButton.Click
@@ -24,6 +25,7 @@ Public Class ViewUserForm
         SaveUserForm.User = user
         SaveUserForm.Tag = "Edit"
         SaveUserForm.ShowDialog()
+        Me.LoadGridView(Nothing)
     End Sub
 
     Private Sub deleteButton_Click(sender As Object, e As EventArgs) Handles deleteButton.Click
