@@ -1,28 +1,61 @@
--- MySQL dump 10.16  Distrib 10.1.8-MariaDB, for Win32 (AMD64)
---
--- Host: localhost    Database: example
--- ------------------------------------------------------
--- Server version	10.1.8-MariaDB
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               10.1.8-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win32
+-- HeidiSQL Version:             9.1.0.4867
+-- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `pengguna`
---
+-- Dumping database structure for example
+DROP DATABASE IF EXISTS `example`;
+CREATE DATABASE IF NOT EXISTS `example` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `example`;
 
+
+-- Dumping structure for table example.barang
+DROP TABLE IF EXISTS `barang`;
+CREATE TABLE IF NOT EXISTS `barang` (
+  `barang_id` char(10) NOT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`barang_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table example.barang: ~2 rows (approximately)
+/*!40000 ALTER TABLE `barang` DISABLE KEYS */;
+INSERT INTO `barang` (`barang_id`, `nama`) VALUES
+	('B000000001', 'Bodrex'),
+	('B000000002', 'Autan'),
+	('B000000003', 'Baygon');
+/*!40000 ALTER TABLE `barang` ENABLE KEYS */;
+
+
+-- Dumping structure for table example.detail
+DROP TABLE IF EXISTS `detail`;
+CREATE TABLE IF NOT EXISTS `detail` (
+  `transaksi_id` char(10) NOT NULL,
+  `barang_id` char(10) NOT NULL,
+  `jumlah` int(11) DEFAULT NULL,
+  PRIMARY KEY (`transaksi_id`,`barang_id`),
+  KEY `barang_id` (`barang_id`),
+  CONSTRAINT `barang_id` FOREIGN KEY (`barang_id`) REFERENCES `barang` (`barang_id`),
+  CONSTRAINT `transaksi_id` FOREIGN KEY (`transaksi_id`) REFERENCES `transaksi` (`transaksi_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table example.detail: ~0 rows (approximately)
+/*!40000 ALTER TABLE `detail` DISABLE KEYS */;
+INSERT INTO `detail` (`transaksi_id`, `barang_id`, `jumlah`) VALUES
+	('T000000001', 'B000000001', 1),
+	('T000000001', 'B000000002', 2);
+/*!40000 ALTER TABLE `detail` ENABLE KEYS */;
+
+
+-- Dumping structure for table example.pengguna
 DROP TABLE IF EXISTS `pengguna`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `pengguna` (
+CREATE TABLE IF NOT EXISTS `pengguna` (
   `user_id` char(6) NOT NULL,
   `username` varchar(50) NOT NULL,
   `kata_sandi` varchar(50) NOT NULL,
@@ -33,25 +66,28 @@ CREATE TABLE `pengguna` (
   `foto` blob,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `pengguna`
---
-
-LOCK TABLES `pengguna` WRITE;
+-- Dumping data for table example.pengguna: ~3 rows (approximately)
 /*!40000 ALTER TABLE `pengguna` DISABLE KEYS */;
-INSERT INTO `pengguna` VALUES ('U00001','admin','admin','Administrator','-','Malang','2010-12-22',NULL);
+INSERT INTO `pengguna` (`user_id`, `username`, `kata_sandi`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `foto`) VALUES
+	('U00001', 'admin', 'admin', 'Administrator', '-', 'Malang', '2010-12-22', NULL),
+	('U00003', 'clala', 'clala', 'clala santa', 'P', 'Malang', '1995-05-30', NULL);
 /*!40000 ALTER TABLE `pengguna` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+
+-- Dumping structure for table example.transaksi
+DROP TABLE IF EXISTS `transaksi`;
+CREATE TABLE IF NOT EXISTS `transaksi` (
+  `transaksi_id` char(10) NOT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`transaksi_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table example.transaksi: ~0 rows (approximately)
+/*!40000 ALTER TABLE `transaksi` DISABLE KEYS */;
+INSERT INTO `transaksi` (`transaksi_id`, `nama`) VALUES
+	('T000000001', 'Test');
+/*!40000 ALTER TABLE `transaksi` ENABLE KEYS */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2015-12-22 22:01:38

@@ -75,6 +75,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application.vb" />
+    <Compile Include="Controllers\BarangController.vb" />
+    <Compile Include="Controllers\TransaksiController.vb" />
     <Compile Include="Controllers\UserController.vb" />
     <Compile Include="Forms\LoginForm.Designer.vb">
       <DependentUpon>LoginForm.vb</DependentUpon>
@@ -89,10 +91,28 @@
       <DependentUpon>MainForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\SaveBarangForm.Designer.vb">
+      <DependentUpon>SaveBarangForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SaveBarangForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SaveTransaksiForm.Designer.vb">
+      <DependentUpon>SaveTransaksiForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SaveTransaksiForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\SaveUserForm.Designer.vb">
       <DependentUpon>SaveUserForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\SaveUserForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewBarangForm.Designer.vb">
+      <DependentUpon>ViewBarangForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ViewBarangForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ViewUserForm.Designer.vb">
@@ -101,7 +121,10 @@
     <Compile Include="Forms\ViewUserForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Model\Barang.vb" />
+    <Compile Include="Model\Detail.vb" />
     <Compile Include="Model\Gender.vb" />
+    <Compile Include="Model\Transaksi.vb" />
     <Compile Include="Model\User.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -126,8 +149,17 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SaveBarangForm.resx">
+      <DependentUpon>SaveBarangForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SaveTransaksiForm.resx">
+      <DependentUpon>SaveTransaksiForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SaveUserForm.resx">
       <DependentUpon>SaveUserForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewBarangForm.resx">
+      <DependentUpon>ViewBarangForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewUserForm.resx">
       <DependentUpon>ViewUserForm.vb</DependentUpon>
@@ -138,6 +170,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">

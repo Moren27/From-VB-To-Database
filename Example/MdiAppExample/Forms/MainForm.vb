@@ -40,17 +40,25 @@ Public Class MainForm
     End Sub
 
     Private Sub PenggunaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PenggunaToolStripMenuItem.Click
+        ViewUserForm.Tag = "View"
         ViewUserForm.MdiParent = Me
         ViewUserForm.Show()
-    End Sub
-
-    Private Sub BantuanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BantuanToolStripMenuItem.Click
-
     End Sub
 
     Public Sub ShowMenu(show As Boolean)
         LoginToolStripMenuItem.Text = If(show, "Logout", "Login")
         MasterToolStripMenuItem.Visible = show
+        TransaksiToolStripMenuItem.Visible = show
     End Sub
 
+    Private Sub TransaksiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransaksiToolStripMenuItem.Click
+        SaveTransaksiForm.MdiParent = Me
+        SaveTransaksiForm.Show()
+    End Sub
+
+    Private Sub BarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarangToolStripMenuItem.Click
+        ViewBarangForm.Tag = "View"
+        ViewBarangForm.MdiParent = Me
+        ViewBarangForm.Show()
+    End Sub
 End Class
