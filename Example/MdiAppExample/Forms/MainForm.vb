@@ -49,6 +49,7 @@ Public Class MainForm
         LoginToolStripMenuItem.Text = If(show, "Logout", "Login")
         MasterToolStripMenuItem.Visible = show
         TransaksiToolStripMenuItem.Visible = show
+        LaporanToolStripMenuItem.Visible = show
     End Sub
 
     Private Sub TransaksiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransaksiToolStripMenuItem.Click
@@ -60,5 +61,10 @@ Public Class MainForm
         ViewBarangForm.Tag = "View"
         ViewBarangForm.MdiParent = Me
         ViewBarangForm.Show()
+    End Sub
+
+    Private Sub BarangToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles BarangToolStripMenuItem1.Click
+        ReportBarangForm.MdiParent = Me
+        ReportBarangForm.Show()
     End Sub
 End Class

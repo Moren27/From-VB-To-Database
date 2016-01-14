@@ -20,12 +20,6 @@
         End Set
     End Property
 
-    Public ReadOnly Property Instance() As Barang
-        Get
-            Return Me
-        End Get
-    End Property
-
     Public Overrides Function ToString() As String
         Return _nama
     End Function
